@@ -9,7 +9,7 @@ class WakeOnLAN
         $macAddressHexadecimal = str_replace(':', '', $macAddressHexadecimal);
 
         // check if $macAddress is a valid mac address
-        if (!preg_match('/[a-f0-9]/i', $macAddressHexadecimal)) {
+        if (!ctype_xdigit($macAddressHexadecimal)) {
             throw new \Exception('Mac address invalid, only 0-9 and a-f are allowed');
         }
 
