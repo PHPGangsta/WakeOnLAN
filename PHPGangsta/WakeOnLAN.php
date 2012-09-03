@@ -18,7 +18,7 @@ class WakeOnLAN
         $magicPacket = str_repeat(chr(0xff), 6).str_repeat($macAddressBinary, 16);
 
         if (!$fp = fsockopen('udp://' . $broadcastAddress, 7, $errno, $errstr, 2)) {
-            throw new \Exception('Cannot open UDP socket');
+            throw new \Exception("Cannot open UDP socket: {$errstr}", $errno);
         }
         fputs($fp, $magicPacket);
         fclose($fp);
